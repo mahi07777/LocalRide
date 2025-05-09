@@ -15,7 +15,7 @@ services:
       - key: APP_DEBUG
         value: false
       - key: APP_KEY
-        value: # Leave blank for now – will be generated
+        value: 
       - key: APP_URL
         value: https://your-service-name.onrender.com
     rootDir: .
