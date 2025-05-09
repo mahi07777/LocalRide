@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: laravel-localride
+    runtime: php
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: |
+      composer install
+      php artisan key:generate
+    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        value: # Leave blank for now – will be generated
+      - key: APP_URL
+        value: https://your-service-name.onrender.com
+    rootDir: .
+    buildFilter: null
