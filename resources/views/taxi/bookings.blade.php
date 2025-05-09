@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h2>Your Bookings</h2>
+<div class="container mt-4">
+<h3 class="mb-3"><b>Search Taxi (Local Tour)</b></h3>
 
     <table class="table">
         <thead>

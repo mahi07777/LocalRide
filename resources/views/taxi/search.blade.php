@@ -86,49 +86,28 @@
 
 <script>
 
-        // async function fetchLocationSuggestions(query, datalistId) {
-        //     if (query.length < 3) return; // avoid unnecessary calls
+async function fetchLocationSuggestions(query, datalistId) {
+    if (query.length < 3) return; 
+    try {
+        const bbox = '&viewbox=73.75,18.65,73.95,18.45&bounded=1';
 
-        //     const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5&addressdetails=1`);
-        //     const data = await res.json();
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5&addressdetails=1&countrycodes=in${bbox}`);
 
-        //     const datalist = document.getElementById(datalistId);
-        //     datalist.innerHTML = ''; // clear previous options
+        const data = await res.json();
 
-        //     data.forEach(item => {
-        //         const option = document.createElement('option');
-        //         option.value = item.display_name;
-        //         datalist.appendChild(option);
-        //     });
-        // }
+        const datalist = document.getElementById(datalistId);
+        datalist.innerHTML = '';
 
+        data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.display_name;
+            datalist.appendChild(option);
+        });
 
-        async function fetchLocationSuggestions(query, datalistId) {
-            if (query.length < 3) return;
-
-            const res = await fetch(`https://nominatim.openstreetmap.org/search?` + new URLSearchParams({
-                format: 'json',
-                q: query,
-                addressdetails: 1,
-                limit: 5,
-                countrycodes: 'in', // 🇮🇳 Only India, change if needed
-                viewbox: '73.5,19.9,74.5,18.9', // Pune/Wai/Satara region bounding box (adjust as needed)
-                bounded: 1 // only return results inside viewbox
-            }));
-
-            const data = await res.json();
-
-            const datalist = document.getElementById(datalistId);
-            datalist.innerHTML = '';
-
-            data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.display_name;
-                datalist.appendChild(option);
-            });
-        }
-
-
+    } catch (error) {
+        console.error('Location suggestion error:', error);
+    }
+}
         // Attach to input events
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('pickup').addEventListener('input', function () {
