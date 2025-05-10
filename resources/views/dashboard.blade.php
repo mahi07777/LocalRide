@@ -20,9 +20,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <!-- <h2 class="mb-4">Dashboard Overview</h2> -->
 
-    {{-- Summary Boxes --}}
     <div class="row mb-4">
         <div class="col-md-3">
             <div class="card text-white bg-primary mb-3">
@@ -42,15 +40,6 @@
             </div>
         </div>
 
-        <!-- <div class="col-md-3">
-            <div class="card text-white bg-info mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Total Users</h5>
-                    <p class="card-text fs-4">{{ $totalUsers }}</p>
-                </div>
-            </div>
-        </div> -->
-
         <div class="col-md-3">
             <div class="card text-white bg-warning mb-3">
                 <div class="card-body">
@@ -61,7 +50,7 @@
         </div>
     </div>
 
-    {{-- Recent Bookings Table --}}
+
     <div class="card">
         <div class="card-header">
             <h5 class="mb-0">Recent Bookings</h5>
