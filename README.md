@@ -1,61 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚕 LocalRide - Local Taxi Booking System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+LocalRide is a web-based taxi booking platform built using **Laravel 10**, **Leaflet.js**, and **OpenRouteService API**. It allows users to seamlessly search for local taxis, view routes, calculate fares dynamically, and confirm bookings—all through an intuitive interface.
 
-## About Laravel
+## 🧩 Key Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- ✅ User Registration & Authentication
+- 📍 Search Taxis via Pickup and Drop Locations
+- 🗺️ Interactive Route Mapping (Leaflet + OpenStreetMap)
+- 📏 Distance & Duration Calculation (OpenRouteService)
+- 💰 Dynamic Fare Estimation (Based on Distance & Package)
+- 📋 Trip Summary & Booking Confirmation
+- 🔐 Secure Form Validation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🔧 Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** Laravel 10 (PHP)
+- **Frontend:** Bootstrap 5, Blade Templates
+- **Mapping:** Leaflet.js, OpenStreetMap
+- **Distance & Routing:** OpenRouteService API
+- **Geocoding (Future):** Nominatim API
+- **Database:** MySQL
 
-## Learning Laravel
+## 🔄 System Workflow
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. User enters pickup and drop location.
+2. Coordinates are fetched using Nominatim or Google Places API.
+3. OpenRouteService calculates route, distance, and duration.
+4. Fare is dynamically computed based on selected package.
+5. Trip route and fare summary displayed on map.
+6. User confirms the booking; details saved in database.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📸 Screenshots
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔐 Login Page
+![Login](screenshots/login.png)
 
-## Laravel Sponsors
+### 📝 Register Page
+![Register](screenshots/register.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🔍 Taxi Search & Home Page
+![Search](screenshots/home_search.png)
 
-### Premium Partners
+### 🗺️ Route Display with Fare Summary
+![Route & Fare](screenshots/route_fare_summary.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+### ✅ Booking Confirmation
+![Confirmation](screenshots/booking_confirmation.png)
 
-## Contributing
+## 📌 Conclusion
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+LocalRide offers a robust starting point for a location-based taxi booking system. It’s scalable and ready for enhancements like real-time driver tracking, payment integration, and mobile responsiveness.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🚀 Get Started Locally
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+git clone https://github.com/mahi07777/localride.git
+cd localride
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm install && npm run dev
+php artisan serve
